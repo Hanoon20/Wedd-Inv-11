@@ -53,11 +53,11 @@ window.DEARDAY.assets = {
   goldBorder:      "assets/images/glass/gold-border.webp",
 
   /* Flowers & botanicals (transparent WebP) -------------------------- */
-  topFlowers:     "assets/images/flowers/top.webp",
-  bottomFlowers:  "assets/images/flowers/bottom.webp",
-  floatingRose:   "assets/images/flowers/floating-rose.webp",
+  topFlowers:     ["assets/images/flowers/top.webp", "assets/images/flowers/top.png"],
+  bottomFlowers:  ["assets/images/flowers/bottom.webp", "assets/images/flowers/bottom.png"],
+  floatingRose:   ["assets/images/flowers/floating-rose.webp", "assets/images/flowers/floating-rose.png"],
   rosePetal:      "assets/images/flowers/petal.webp",
-  goldBotanical:  "assets/images/botanical/gold.webp",
+  goldBotanical:  ["assets/images/botanical/gold.webp", "assets/images/botanical/gold.png"],
   botanicalLeft:  "assets/images/botanical/left.webp",
   botanicalRight: "assets/images/botanical/right.webp",
 
