@@ -572,8 +572,8 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 .flower { position: absolute; height: auto; filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.5)); }
-.flower--top { left: -30%; top: -20%; width: 76%; }
-.flower--bottom { right: -20%; bottom: -13%; width: 74%; }
+.flower--top { left: -36%; top: -26%; width: 64%; }
+.flower--bottom { right: -30%; bottom: -22%; width: 68%; }
 
 .foreground-rose {
   position: absolute;
@@ -1011,8 +1011,8 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 767px) {
   body { font-size: 17px; }
 
-  .flower--top { left: -22%; top: -12%; width: 72%; }
-  .flower--bottom { right: -14%; bottom: -10%; width: 66%; }
+  .flower--top { left: -18%; top: -24%; width: 56%; }
+  .flower--bottom { right: -16%; bottom: -20%; width: 62%; }
   .botanical--back { right: -30%; top: -16%; width: 76%; }
   .foreground-rose { width: 42vw; left: -12vw; bottom: -6svh; filter: blur(3px) brightness(0.8); }
 
