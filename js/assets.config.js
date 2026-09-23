@@ -19,13 +19,17 @@ window.DEARDAY = window.DEARDAY || {};
 /*  VISUAL ASSETS                                                      */
 /* ------------------------------------------------------------------ */
 window.DEARDAY.assets = {
+  /* "light" for pale backgrounds (dark ink, frosted glass),
+     "dark" for night/velvet backgrounds (ivory ink, smoked glass). */
+  tone: "light",
+
   /* Opening film ----------------------------------------------------- */
   openingVideo:        "assets/videos/opening.mp4",
   openingVideoWebm:    "assets/videos/opening.webm",
   openingMobileVideo:  "assets/videos/opening-mobile.mp4",
   /* Falls back to the satin backdrop until a real first frame exists. */
-  openingPoster:       ["assets/images/envelope/opening-poster.avif", "assets/images/envelope/opening-poster.webp", "assets/images/envelope/opening-poster.jpg", "assets/images/textures/silk.webp"],
-  openingPosterMobile: ["assets/images/envelope/opening-poster-mobile.webp", "assets/images/textures/silk-mobile.webp"],
+  openingPoster:       ["assets/images/envelope/opening-poster.avif", "assets/images/envelope/opening-poster.webp", "assets/images/envelope/opening-poster.jpg", "assets/images/textures/background.webp"],
+  openingPosterMobile: ["assets/images/envelope/opening-poster-mobile.webp", "assets/images/textures/background-mobile.webp"],
 
   /* Still-image envelope — only used if the film cannot play --------- */
   envelopeBack:   "assets/images/envelope/envelope-back.webp",
@@ -37,8 +41,8 @@ window.DEARDAY.assets = {
   /* The environment (the last frame of the film, ideally a clean plate) */
   sceneBackdrop:       ["assets/images/textures/scene-backdrop.avif", "assets/images/textures/scene-backdrop.webp"],
   sceneBackdropMobile: ["assets/images/textures/scene-backdrop-mobile.webp"],
-  silkBackground:      ["assets/images/textures/silk.avif", "assets/images/textures/silk.webp"],
-  silkBackgroundMobile:["assets/images/textures/silk-mobile.webp"],
+  silkBackground:      ["assets/images/textures/background.webp"],
+  silkBackgroundMobile:["assets/images/textures/background-mobile.webp"],
 
   /* Light ------------------------------------------------------------ */
   bokeh:       "assets/images/lighting/bokeh.webp",

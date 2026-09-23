@@ -32,6 +32,7 @@
 
   if (hasGsap) gsap.registerPlugin(ScrollTrigger);
   if (cinematic) root.classList.add("is-cinematic");
+  if (A.tone) root.dataset.tone = A.tone;
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   scrollTo(0, 0);
 

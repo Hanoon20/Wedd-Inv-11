@@ -795,7 +795,7 @@ html.lenis, html.lenis body { height: auto; }
 /* ---- 05 Venue ---- */
 .venue-photo { position: absolute; inset: -4%; }
 .venue-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.venue-photo::after {
+.venue-photo:has(img.is-loaded)::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -1048,6 +1048,66 @@ html:not(.is-cinematic) .scene--story .px { position: relative; }
 html:not(.is-cinematic) .story-track { position: relative; display: grid; gap: 28px; justify-items: center; padding-top: 40px; }
 html:not(.is-cinematic) .story-frame { position: relative; left: auto; top: auto; }
 html:not(.is-cinematic) .scroll-cue { display: none; }
+
+/* =====================================================================
+   LIGHT TONE — pale backgrounds (tone: "light" in assets.config.js).
+   Dark ink on frosted glass, deeper gold, soft warm shadows.
+   ===================================================================== */
+html[data-tone="light"] {
+  --bg: #efe6da;
+  --bg-deep: #e6dccd;
+  --ink: #3a2a1f;
+  --ink-soft: rgba(58, 42, 31, 0.78);
+  --ink-faint: rgba(58, 42, 31, 0.56);
+  --gold: #86622f;
+  --gold-soft: rgba(134, 98, 47, 0.62);
+  --gold-line: rgba(134, 98, 47, 0.42);
+  --heart: #a3354a;
+  --glass-line: rgba(255, 255, 255, 0.7);
+  color-scheme: light;
+}
+html[data-tone="light"] .world__base { background: radial-gradient(90% 70% at 50% 45%, #f1e9de, #ddd0bf); }
+html[data-tone="light"] .world__plate { filter: none; }
+html[data-tone="light"] .world__orbs { display: none; }
+html[data-tone="light"] .world__vignette { background: radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(110, 82, 52, 0.22) 100%); }
+html[data-tone="light"] .world__grain { opacity: 0.04; }
+
+html[data-tone="light"] .glass {
+  background: linear-gradient(160deg, rgba(255, 253, 249, 0.62), rgba(255, 251, 245, 0.38) 45%, rgba(255, 253, 249, 0.5));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.1);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(120, 92, 60, 0.12),
+    0 36px 70px -30px rgba(92, 66, 40, 0.38),
+    0 10px 26px -12px rgba(92, 66, 40, 0.22);
+}
+html[data-tone="light"] .glass__sweep::before {
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.25) 42%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.25) 58%, transparent 80%);
+}
+
+html[data-tone="light"] .intro::before { background: radial-gradient(90% 70% at 50% 50%, #f1e9de, #ddd0bf); }
+html[data-tone="light"] .intro__grade {
+  background:
+    radial-gradient(110% 80% at 50% 42%, transparent 50%, rgba(110, 82, 52, 0.2) 100%),
+    linear-gradient(to top, rgba(244, 236, 226, 0.92), transparent 42%);
+}
+html[data-tone="light"] .intro__names,
+html[data-tone="light"] .card__names .script { text-shadow: none; }
+html[data-tone="light"] .intro__veil {
+  background: radial-gradient(60% 55% at 50% 45%, rgba(255, 252, 246, 0.95), rgba(255, 246, 232, 0.5) 55%, rgba(255, 246, 232, 0) 100%);
+}
+
+html[data-tone="light"] .portrait__photo { background: rgba(255, 250, 244, 0.5); }
+html[data-tone="light"] .btn-glass { background: rgba(255, 252, 247, 0.4); }
+html[data-tone="light"] .btn-glass--solid { background: rgba(148, 112, 60, 0.14); }
+html[data-tone="light"] .btn-glass:hover,
+html[data-tone="light"] .btn-glass:focus-visible { background: rgba(148, 112, 60, 0.18); }
+html[data-tone="light"] .field--choice label span,
+html[data-tone="light"] .stepper button { background: rgba(255, 252, 247, 0.45); border-color: rgba(148, 112, 60, 0.3); }
+html[data-tone="light"] .field--choice input:checked + span { background: rgba(148, 112, 60, 0.14); border-color: var(--gold); }
+html[data-tone="light"] .sound { background: rgba(255, 252, 247, 0.55); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.2s !important; }
