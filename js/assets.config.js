@@ -23,8 +23,9 @@ window.DEARDAY.assets = {
   openingVideo:        "assets/videos/opening.mp4",
   openingVideoWebm:    "assets/videos/opening.webm",
   openingMobileVideo:  "assets/videos/opening-mobile.mp4",
-  openingPoster:       ["assets/images/envelope/opening-poster.avif", "assets/images/envelope/opening-poster.webp", "assets/images/envelope/opening-poster.jpg"],
-  openingPosterMobile: ["assets/images/envelope/opening-poster-mobile.webp"],
+  /* Falls back to the satin backdrop until a real first frame exists. */
+  openingPoster:       ["assets/images/envelope/opening-poster.avif", "assets/images/envelope/opening-poster.webp", "assets/images/envelope/opening-poster.jpg", "assets/images/textures/silk.webp"],
+  openingPosterMobile: ["assets/images/envelope/opening-poster-mobile.webp", "assets/images/textures/silk-mobile.webp"],
 
   /* Still-image envelope — only used if the film cannot play --------- */
   envelopeBack:   "assets/images/envelope/envelope-back.webp",
