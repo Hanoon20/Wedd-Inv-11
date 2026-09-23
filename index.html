@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wedding Invitation</title>
+  <meta name="description" content="You are warmly invited. A Dearday.lk invitation.">
+  <meta name="theme-color" content="#0e0908">
+  <meta property="og:title" content="Wedding Invitation">
+  <meta property="og:description" content="You are warmly invited.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Configuration first: visuals and event data stay out of the code. -->
+  <script src="js/assets.config.js"></script>
+  <script src="js/invitation.config.js"></script>
+</head>
+<body class="is-locked">
+
+  <!-- ==============================================================
+       WORLD — the physical environment every scene lives inside.
+       Fixed behind everything; layered at increasing depth.
+       ============================================================== -->
+  <div class="world" id="world" aria-hidden="true">
+    <div class="world__base"></div>
+    <div class="world__layer" data-depth="0.15">
+      <img class="world__plate" data-asset="sceneBackdrop,silkBackground" alt="">
+    </div>
+    <div class="world__layer" data-depth="0.35">
+      <img class="world__glow" data-asset="candleGlow" alt="">
+    </div>
+    <div class="world__layer" data-depth="0.6">
+      <img class="world__bokeh" data-asset="bokeh" alt="">
+      <div class="world__orbs"></div>
+    </div>
+    <div class="world__layer world__layer--leak" data-depth="0.9">
+      <img class="world__leak" data-asset="lightLeak" alt="">
+    </div>
+    <div class="world__vignette"></div>
+    <div class="world__grain"></div>
+  </div>
+
+  <!-- ==============================================================
+       INTRO — envelope still → cinematic film → invitation
+       ============================================================== -->
+  <section class="intro" id="intro" aria-label="Opening">
+    <img class="intro__poster" data-asset="openingPoster" alt="" fetchpriority="high">
+    <video class="intro__video" id="introVideo" muted playsinline preload="metadata" disablepictureinpicture aria-hidden="true"></video>
+
+    <!-- Still-image envelope: only used if the film cannot play. -->
+    <div class="envelope" id="envelope" aria-hidden="true">
+      <div class="envelope__body">
+        <img class="envelope__back"   data-asset="envelopeBack" alt="">
+        <div class="envelope__card glass"></div>
+        <img class="envelope__front"  data-asset="envelopeFront" alt="">
+        <img class="envelope__flap"   data-asset="envelopeFlap" alt="">
+        <img class="envelope__ribbon" data-asset="envelopeRibbon" alt="">
+        <img class="envelope__seal"   data-asset="envelopeSeal" alt="">
+      </div>
+    </div>
+
+    <div class="intro__grade"></div>
+
+    <div class="intro__ui" id="introUi">
+      <p class="intro__kicker">The wedding of</p>
+      <p class="intro__names"><span data-bind="brideFirst"></span> <span class="amp">&amp;</span> <span data-bind="groomFirst"></span></p>
+      <button class="intro__open" id="openBtn" type="button">
+        <span class="intro__line"></span>
+        <span>Tap to Open</span>
+        <span class="intro__line"></span>
+      </button>
+    </div>
+
+    <button class="intro__skip" id="skipBtn" type="button">Skip</button>
+    <div class="intro__buffer" id="introBuffer"></div>
+    <div class="intro__veil" id="introVeil"></div>
+  </section>
+
+  <!-- ==============================================================
+       THEATRE — one continuous camera move through the story.
+       Without JS / with reduced motion, scenes simply stack.
+       ============================================================== -->
+  <main class="theatre" id="theatre">
+
+    <!-- 01 · Glass invitation -->
+    <section class="scene scene--invite" id="scene-invite" data-scene="invite" aria-label="Invitation">
+      <div class="px" data-depth="0.25">
+        <div class="anchor">
+          <img class="botanical botanical--back" data-asset="goldBotanical,botanicalLeft" alt="">
+        </div>
+      </div>
+
+      <div class="px" data-depth="0.55">
+        <div class="card-move" id="inviteCard">
+          <img class="card-shadow" data-asset="glassShadow" alt="">
+          <div class="card-tilt" data-tilt>
+            <article class="glass card">
+              <img class="card__frame" data-asset="glassFrame,goldBorder" alt="">
+              <svg class="card__corners" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true"><use href="#corner" x="0" y="0"/></svg>
+              <div class="card__content">
+                <p class="card__bismillah reveal" lang="ar" dir="rtl" data-bind="verse.bismillah"></p>
+                <span class="ornament reveal"></span>
+                <p class="card__verse reveal"><span data-bind="verse.translation"></span><small data-bind="verse.reference"></small></p>
+                <span class="ornament ornament--small reveal"></span>
+                <p class="card__event reveal" data-bind="eventType"></p>
+                <h1 class="card__names">
+                  <span class="script reveal" data-bind="brideName"></span>
+                  <span class="card__amp reveal">&amp;</span>
+                  <span class="script reveal" data-bind="groomName"></span>
+                </h1>
+                <p class="card__invite reveal"><span data-bind="hosts"></span><br><span data-bind="inviteLine"></span></p>
+                <span class="ornament ornament--small reveal"></span>
+                <p class="card__date reveal" data-bind="dateShort"></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="px" data-depth="0.9">
+        <div class="anchor"><img class="flower flower--top" id="flowerTop" data-asset="topFlowers" alt=""></div>
+      </div>
+      <div class="px" data-depth="1.2">
+        <div class="anchor"><img class="flower flower--bottom" id="flowerBottom" data-asset="bottomFlowers" alt=""></div>
+      </div>
+      <div class="px" data-depth="1.8">
+        <img class="foreground-rose" id="foreRose" data-asset="floatingRose" alt="">
+      </div>
+
+      <div class="scroll-cue" id="scrollCue"><span>Scroll</span><i></i></div>
+    </section>
+
+    <!-- 02 · Quran verse -->
+    <section class="scene scene--verse" id="scene-verse" data-scene="verse" aria-label="Verse">
+      <div class="px" data-depth="0.3">
+        <img class="botanical botanical--verse" data-asset="botanicalRight,goldBotanical" alt="">
+      </div>
+      <div class="px" data-depth="0.6">
+        <div class="slab-move">
+          <div class="glass slab">
+            <p class="slab__arabic" lang="ar" dir="rtl" data-bind="verse.arabic"></p>
+            <span class="ornament"></span>
+            <p class="slab__translation">&ldquo;<span data-bind="verse.translation"></span>&rdquo;</p>
+            <p class="slab__ref" data-bind="verse.reference"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · The couple -->
+    <section class="scene scene--couple" id="scene-couple" data-scene="couple" aria-label="The couple">
+      <div class="px" data-depth="0.5">
+        <div class="portrait-move">
+          <figure class="glass portrait">
+            <div class="portrait__photo">
+              <img data-photo="couplePhoto" alt="The couple">
+              <div class="portrait__monogram"><span data-bind="brideInitial"></span><i>&amp;</i><span data-bind="groomInitial"></span></div>
+            </div>
+            <div class="portrait__light"></div>
+          </figure>
+        </div>
+      </div>
+      <div class="px" data-depth="0.8">
+        <div class="couple-text">
+          <p class="label">Two hearts, one journey</p>
+          <p class="script couple-text__name" data-bind="brideName"></p>
+          <p class="couple-text__amp">&amp;</p>
+          <p class="script couple-text__name" data-bind="groomName"></p>
+          <span class="ornament"></span>
+        </div>
+      </div>
+      <div class="px" data-depth="1.4">
+        <img class="couple-rose" data-asset="floatingRose,rosePetal" alt="">
+      </div>
+    </section>
+
+    <!-- 04 · Date & time -->
+    <section class="scene scene--details" id="scene-details" data-scene="details" aria-label="Date and time">
+      <div class="px" data-depth="0.6">
+        <div class="panel-move" id="datePanel">
+          <div class="glass panel panel--date">
+            <p class="label">Save the date</p>
+            <p class="date__weekday" data-bind="weekday"></p>
+            <p class="date__day" data-bind="day"></p>
+            <p class="date__month"><span data-bind="month"></span> <span data-bind="year"></span></p>
+            <div class="countdown" id="countdown" aria-live="off">
+              <div><b data-cd="d">00</b><small>Days</small></div>
+              <div><b data-cd="h">00</b><small>Hours</small></div>
+              <div><b data-cd="m">00</b><small>Minutes</small></div>
+            </div>
+            <a class="link" id="calendarLink" target="_blank" rel="noopener">Add to calendar</a>
+          </div>
+        </div>
+      </div>
+      <div class="px" data-depth="0.6">
+        <div class="panel-move" id="timePanel">
+          <div class="glass panel panel--time">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <p class="label">The celebration begins</p>
+            <p class="time__value" data-bind="timeLabel"></p>
+            <span class="ornament ornament--small"></span>
+            <p class="time__note" data-bind="afterNote"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · Venue -->
+    <section class="scene scene--venue" id="scene-venue" data-scene="venue" aria-label="Venue">
+      <div class="px" data-depth="0.12">
+        <div class="venue-photo" id="venuePhoto">
+          <img data-photo="venuePhoto" alt="">
+        </div>
+      </div>
+      <div class="px" data-depth="0.6">
+        <div class="panel-move" id="venuePanel">
+          <div class="glass panel panel--venue">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <p class="label">The venue</p>
+            <p class="venue__name" data-bind="venueName"></p>
+            <p class="venue__address" data-bind="venueAddress"></p>
+            <a class="btn-glass" data-bind-href="mapUrl" target="_blank" rel="noopener">View Location</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · Photo story -->
+    <section class="scene scene--story" id="scene-story" data-scene="story" aria-label="Our story">
+      <div class="px" data-depth="0.4">
+        <div class="story-title" id="storyTitle">
+          <p class="label">Our story</p>
+          <p class="script">in moments</p>
+        </div>
+      </div>
+      <div class="px" data-depth="0.7">
+        <div class="story-track" id="storyTrack"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==============================================================
+       RSVP
+       ============================================================== -->
+  <section class="rsvp" id="rsvp" aria-labelledby="rsvpTitle">
+    <div class="rsvp__inner glass" data-reveal>
+      <p class="label">Kindly reply</p>
+      <h2 class="rsvp__title" id="rsvpTitle">RSVP</h2>
+      <p class="rsvp__deadline" data-bind="rsvp.deadline"></p>
+
+      <form class="rsvp__form" id="rsvpForm" novalidate>
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+
+        <fieldset class="field field--choice">
+          <legend>Attendance</legend>
+          <div class="choices">
+            <label><input type="radio" name="attendance" value="yes" checked><span>Joyfully accepts</span></label>
+            <label><input type="radio" name="attendance" value="no"><span>Regretfully declines</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field field--guests" id="guestsField">
+          <span id="guestsLabel">Guests</span>
+          <div class="stepper" role="group" aria-labelledby="guestsLabel">
+            <button type="button" data-step="-1" aria-label="Fewer guests">&minus;</button>
+            <output name="guests" id="guestsOut">1</output>
+            <button type="button" data-step="1" aria-label="More guests">+</button>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>Message <em>(optional)</em></span>
+          <textarea name="message" rows="3"></textarea>
+        </label>
+
+        <div class="rsvp__actions">
+          <button class="btn-glass btn-glass--solid" type="submit">Confirm Attendance</button>
+          <button class="btn-glass" type="button" id="waBtn">
+            <svg class="icon icon--inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>
+            WhatsApp RSVP
+          </button>
+        </div>
+        <p class="rsvp__status" id="rsvpStatus" role="status"></p>
+      </form>
+
+      <div class="rsvp__thanks" id="rsvpThanks" hidden>
+        <p class="script">Thank you</p>
+        <p id="rsvpThanksText"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================================
+       FINAL
+       ============================================================== -->
+  <footer class="final" id="final">
+    <div class="final__inner" data-reveal>
+      <span class="ornament"></span>
+      <p class="final__message" data-bind="finalMessage"></p>
+      <p class="script final__names"><span data-bind="brideFirst"></span> &amp; <span data-bind="groomFirst"></span></p>
+      <p class="final__date" data-bind="dateShort"></p>
+    </div>
+    <a class="brand" id="brand" target="_blank" rel="noopener">Made with <span aria-label="love">&hearts;</span> <span data-bind="brand.name"></span></a>
+  </footer>
+
+  <!-- Sound: never autoplays. Appears only if a track exists. -->
+  <button class="sound" id="soundBtn" type="button" aria-pressed="false" aria-label="Play music" hidden>
+    <span class="sound__bars"><i></i><i></i><i></i><i></i></span>
+    <span class="sound__label">Sound</span>
+  </button>
+
+  <!-- Shared gold corner ornament (fallback when no gold-border asset) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="corner-shape" fill="none" stroke="currentColor" stroke-width="0.35" stroke-linecap="round">
+        <path d="M2 16 V4 Q2 2 4 2 H16"/>
+        <path d="M4 12 Q4 4 12 4"/>
+        <path d="M6 9 q2-3 5-3"/>
+        <circle cx="4.4" cy="4.4" r="0.7"/>
+      </g>
+      <g id="corner">
+        <use href="#corner-shape"/>
+        <use href="#corner-shape" transform="translate(100 0) scale(-1 1)"/>
+        <use href="#corner-shape" transform="translate(0 140) scale(1 -1)"/>
+        <use href="#corner-shape" transform="translate(100 140) scale(-1 -1)"/>
+      </g>
+    </defs>
+  </svg>
+
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
