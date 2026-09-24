@@ -98,8 +98,7 @@
               <svg class="card__corners" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true"><use href="#corner" x="0" y="0"/></svg>
               <div class="card__content">
                 <p class="card__bismillah reveal" lang="ar" dir="rtl" data-bind="verse.bismillah"></p>
-                <span class="ornament reveal"></span>
-                <p class="card__verse reveal"><span data-bind="verse.translation"></span><small data-bind="verse.reference"></small></p>
+                <p class="card__invite reveal"><span data-bind="hosts"></span><br><span data-bind="inviteLine"></span></p>
                 <span class="ornament ornament--small reveal"></span>
                 <p class="card__event reveal" data-bind="eventType"></p>
                 <h1 class="card__names">
@@ -107,9 +106,11 @@
                   <span class="card__amp reveal">&amp;</span>
                   <span class="script reveal" data-bind="groomName"></span>
                 </h1>
-                <p class="card__invite reveal"><span data-bind="hosts"></span><br><span data-bind="inviteLine"></span></p>
-                <span class="ornament ornament--small reveal"></span>
-                <p class="card__date reveal" data-bind="dateShort"></p>
+                <span class="ornament reveal"></span>
+                <p class="card__date reveal">
+                  <span class="card__weekday" data-bind="weekday"></span>
+                  <span class="card__fulldate" data-bind="dateLong"></span>
+                </p>
               </div>
             </article>
           </div>

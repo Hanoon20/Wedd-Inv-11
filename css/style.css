@@ -6,7 +6,7 @@
 
 :root {
   --bg: #0e0908;
-  --bg-deep: #070504;
+  --bg-deep: #1a0f0c;
   --ink: #f4ebe0;
   --ink-soft: rgba(244, 235, 224, 0.74);
   --ink-faint: rgba(244, 235, 224, 0.5);
@@ -67,6 +67,9 @@ body.is-locked { overflow: hidden; height: 100svh; }
 img { display: block; max-width: none; user-select: none; -webkit-user-drag: none; }
 button, input, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
+html { -webkit-tap-highlight-color: transparent; }
+.intro, .intro * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.intro__open:focus { outline: none; }
 a { color: inherit; }
 
 /* Images from config: invisible until loaded, removed if missing. */
@@ -129,7 +132,11 @@ img.is-missing { display: none !important; }
    ===================================================================== */
 .world {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100lvh;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -475,23 +482,6 @@ html.lenis, html.lenis body { height: auto; }
 }
 .card__content p { margin: 0; }
 .card__bismillah { font-family: var(--arabic); font-size: 6.4cqw; line-height: 1.4; color: var(--gold); }
-.card__verse {
-  font-family: var(--caps);
-  font-size: 2.7cqw;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.card__verse small {
-  display: block;
-  margin-top: 1cqw;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 3.3cqw;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  color: var(--gold);
-}
 .card__event {
   margin-top: 2cqw !important;
   font-family: var(--caps);
@@ -515,13 +505,26 @@ html.lenis, html.lenis body { height: auto; }
   text-shadow: 0 1px 18px rgba(0, 0, 0, 0.35);
 }
 .card__amp { font-family: var(--serif); font-style: italic; font-size: 6.5cqw; color: var(--ink-soft); margin: 0.4cqw 0; }
-.card__invite { font-size: 3.9cqw; line-height: 1.5; color: var(--ink-soft); }
-.card__date {
+.card__invite { font-size: 3.9cqw; line-height: 1.5; color: var(--ink-soft); margin-top: 1cqw !important; }
+.card__date { display: flex; flex-direction: column; align-items: center; gap: 1.2cqw; }
+.card__weekday {
   font-family: var(--caps);
-  font-size: 3cqw;
-  letter-spacing: 0.3em;
+  font-size: 4.2cqw;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  padding-left: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.card__fulldate {
+  font-family: var(--caps);
+  font-size: 5.4cqw;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  padding-left: 0.14em;
   text-transform: uppercase;
   color: var(--ink);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.3);
 }
 .card .ornament { width: 28cqw; }
 .card .ornament--small { width: 18cqw; }
@@ -585,7 +588,8 @@ html.lenis, html.lenis body { height: auto; }
 .slab__arabic {
   font-family: var(--arabic);
   font-size: clamp(2.4rem, 7vw, 4.4rem);
-  line-height: 1.5;
+  line-height: 1.9;
+  padding: 0.25em 0.1em 0.15em;
   color: var(--gold);
   margin-bottom: 18px !important;
 }

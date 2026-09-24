@@ -60,6 +60,7 @@
     year: fmt({ year: "numeric" })
   };
   data.dateShort = eventDay ? `${data.weekday} · ${data.day} ${data.month} ${data.year}` : "";
+  data.dateLong = eventDay ? `${data.day} ${data.month} ${data.year}` : "";
 
   function bindData() {
     $$("[data-bind]").forEach((el) => {
