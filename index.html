@@ -65,14 +65,9 @@
 
     <div class="intro__grade"></div>
 
+    <!-- No visible text: the whole opening scene is the tap target. -->
     <div class="intro__ui" id="introUi">
-      <p class="intro__kicker">The wedding of</p>
-      <p class="intro__names"><span data-bind="brideFirst"></span> <span class="amp">&amp;</span> <span data-bind="groomFirst"></span></p>
-      <button class="intro__open" id="openBtn" type="button">
-        <span class="intro__line"></span>
-        <span>Tap to Open</span>
-        <span class="intro__line"></span>
-      </button>
+      <button class="intro__open" id="openBtn" type="button" aria-label="Open the invitation"></button>
     </div>
 
     <button class="intro__skip" id="skipBtn" type="button">Skip</button>

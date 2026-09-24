@@ -29,7 +29,7 @@ npx http-server -p 8080 .
 ## The experience
 
 ```
-Tap to Open  →  opening film (muted)  →  dissolve into the live glass card
+Tap anywhere  →  opening film (muted)  →  dissolve into the live glass card
    → scroll: camera approaches, flowers separate in depth, glass recedes
    → Quran verse slab → glass portrait of the couple → date → time
    → venue photograph + View Location → travel through photo story
@@ -60,8 +60,7 @@ Put files at these paths, or change the paths in `js/assets.config.js`. Use WebP
 | `opening.mp4` | 1920×1080, H.264, **5–8 s**, no audio track, ~3–5 MB, `faststart` |
 | `opening-mobile.mp4` | 1080×1920 (9:16) recomposed for portrait, ~2–3 MB |
 | `opening.webm` *(optional)* | VP9 version of the desktop film |
-| `images/envelope/opening-poster.webp` | **First frame** of the film (shown before Tap to Open) |
-| `images/envelope/opening-poster-mobile.webp` | First frame of the mobile film |
+| `openingPoster` (config) | Still shown before the guest taps. Currently the satin background; point it at the film's first frame if you prefer |
 | `images/textures/scene-backdrop.webp` | **Last frame, clean plate** (satin + candles, *no card*) |
 
 **The seamless hand-off.** The film's last frame should look like the site's first scene: a glass card in the centre of dark satin, lit warm, taking up about **62% of the frame height** on desktop and **80% of the width** on mobile. The website dissolves from the film into that composition and uses `scene-backdrop` as the environment behind it. Export that backdrop from the same shot without the card, or remove the card in Canva.

@@ -292,59 +292,22 @@ img.is-missing { display: none !important; }
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(110% 80% at 50% 42%, transparent 40%, rgba(5, 3, 2, 0.7) 100%),
-    linear-gradient(to top, rgba(6, 4, 3, 0.82), transparent 38%);
+    radial-gradient(110% 80% at 50% 42%, transparent 45%, rgba(5, 3, 2, 0.6) 100%);
 }
 
-.intro__ui {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: max(10svh, calc(env(safe-area-inset-bottom) + 56px));
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  padding: 0 16px;
-}
-.intro__kicker {
-  margin: 0;
-  font-family: var(--caps);
-  font-size: 0.66rem;
-  letter-spacing: 0.44em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.intro__names {
-  margin: 0 0 18px;
-  font-family: var(--script);
-  font-size: clamp(2.4rem, 7vw, 3.6rem);
-  line-height: 1.1;
-  color: var(--gold);
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
-}
-.intro__names .amp { font-family: var(--serif); font-style: italic; font-size: 0.6em; color: var(--ink-soft); padding: 0 0.2em; }
-
+/* The whole opening scene is one invisible tap target (no text). */
+.intro__ui { position: absolute; inset: 0; z-index: 3; }
 .intro__open {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 8px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
   border: 0;
   background: none;
-  font-family: var(--caps);
-  font-size: 0.72rem;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--ink);
-  animation: breathe 3.6s ease-in-out infinite;
+  cursor: pointer;
 }
-.intro__open:focus-visible { outline: 1px solid var(--gold-soft); outline-offset: 6px; }
-.intro__line { width: 42px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-.intro__line:last-child { transform: scaleX(-1); }
-@keyframes breathe { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+.intro__open:focus-visible { outline: 1px solid var(--gold-soft); outline-offset: -12px; }
 
 .intro__skip {
   position: absolute;
@@ -1097,7 +1060,6 @@ html[data-tone="light"] .intro__grade {
     radial-gradient(110% 80% at 50% 42%, transparent 50%, rgba(110, 82, 52, 0.2) 100%),
     linear-gradient(to top, rgba(244, 236, 226, 0.92), transparent 42%);
 }
-html[data-tone="light"] .intro__names,
 html[data-tone="light"] .card__names .script { text-shadow: none; }
 html[data-tone="light"] .intro__veil {
   background: radial-gradient(60% 55% at 50% 45%, rgba(255, 252, 246, 0.95), rgba(255, 246, 232, 0.5) 55%, rgba(255, 246, 232, 0) 100%);
