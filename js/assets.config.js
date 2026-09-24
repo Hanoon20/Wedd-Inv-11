@@ -21,7 +21,7 @@ window.DEARDAY = window.DEARDAY || {};
 window.DEARDAY.assets = {
   /* "light" for pale backgrounds (dark ink, frosted glass),
      "dark" for night/velvet backgrounds (ivory ink, smoked glass). */
-  tone: "light",
+  tone: "dark",
 
   /* Opening film ----------------------------------------------------- */
   openingVideo:        "assets/videos/opening.mp4",
