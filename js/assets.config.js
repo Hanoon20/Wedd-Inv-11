@@ -28,8 +28,11 @@ window.DEARDAY.assets = {
   openingVideoWebm:    "assets/videos/opening.webm",
   openingMobileVideo:  "assets/videos/opening-mobile.mp4",
   /* Falls back to the satin backdrop until a real first frame exists. */
-  openingPoster:       ["assets/images/textures/background.webp"],
-  openingPosterMobile: ["assets/images/textures/background-mobile.webp"],
+  openingPoster:       ["assets/images/envelope/opening-poster.webp", "assets/images/textures/background.webp"],
+  openingPosterMobile: ["assets/images/envelope/opening-poster-mobile.webp", "assets/images/textures/background-mobile.webp"],
+  /* Seconds into the film when the invitation starts to appear
+     (here: the flaps are open and the camera is moving in). */
+  openingHandoff: 3.9,
 
   /* Still-image envelope — only used if the film cannot play --------- */
   envelopeBack:   "assets/images/envelope/envelope-back.webp",

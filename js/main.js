@@ -297,10 +297,14 @@
 
       // Begin the hand-off just before the last frame so the film
       // dissolves into the live scene instead of stopping.
+      // Hand off while the camera is still zooming into the envelope, so
+      // the invitation emerges from inside it rather than after it.
+      const handoff = Number(A.openingHandoff) || 0;
       video.addEventListener("timeupdate", () => {
-        if (video.duration && video.currentTime >= video.duration - 0.7) finishIntro();
+        const t = video.currentTime;
+        if ((handoff && t >= handoff) || (video.duration && t >= video.duration - 0.7)) finishIntro(true);
       });
-      video.addEventListener("ended", finishIntro, { once: true });
+      video.addEventListener("ended", () => finishIntro(true), { once: true });
       video.addEventListener("error", () => { if (started) finishIntro(); else done(false); });
 
       // A stalled stream should never trap the guest in the intro.
@@ -357,7 +361,7 @@
     video.remove();
   }
 
-  function finishIntro() {
+  function finishIntro(fromFilm) {
     if (finished) return;
     finished = true;
 
@@ -372,17 +376,21 @@
     gsap.to(skipBtn, { autoAlpha: 0, duration: 0.4 });
 
     const quick = skipIntro || reduced;
+    const film = fromFilm === true && !quick;
+    const fade = quick ? 0.01 : film ? 1.9 : 1.6;
     const tl = gsap.timeline({ onComplete: unlock });
-    // Depth hand-off: the film moves past the camera as the scene settles.
+    // Depth hand-off: the film keeps pushing forward as it dissolves,
+    // and the glass card grows out of it.
     tl.to(intro, {
       opacity: 0,
-      scale: quick ? 1 : 1.05,
-      filter: quick || isMobile ? "none" : "blur(6px)",
-      duration: quick ? 0.01 : 1.6,
-      ease: "power2.inOut"
+      scale: quick || film ? 1 : 1.05,
+      filter: quick || isMobile ? "none" : film ? "blur(3px)" : "blur(6px)",
+      duration: fade,
+      ease: film ? "power1.inOut" : "power2.inOut"
     }, 0);
-    tl.call(() => { intro.classList.add("is-done"); teardownVideo(); }, null, quick ? 0.02 : 1.6);
-    tl.add(revealInvite(quick), quick ? 0 : 0.35);
+    if (film) tl.to(video, { scale: 1.25, duration: fade + 0.3, ease: "power1.in" }, 0);
+    tl.call(() => { intro.classList.add("is-done"); teardownVideo(); }, null, fade + 0.02);
+    tl.add(revealInvite(quick), quick ? 0 : film ? 0.1 : 0.35);
   }
 
   /* =================================================================
@@ -396,7 +404,7 @@
 
   function prepareInvite() {
     if (!hasGsap) return;
-    gsap.set(card, { scale: 0.95, z: -60 * Z });
+    gsap.set(card, { scale: 0.88, z: -120 * Z });
     gsap.set([flowerTopWrap, flowerBottomWrap], { autoAlpha: 0 });
     gsap.set("#flowerTop", { x: -vw(3), y: -vh(3), z: 120 * Z });
     gsap.set("#flowerBottom", { x: vw(3), y: vh(3), z: 140 * Z });
