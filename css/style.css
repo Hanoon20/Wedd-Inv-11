@@ -861,19 +861,19 @@ html.lenis, html.lenis body { height: auto; }
 .rsvp {
   position: relative;
   z-index: 2;
-  padding: 16svh 16px 10svh;
+  padding: 12svh 16px 8svh;
 }
 .rsvp__inner {
-  width: min(580px, 100%);
+  width: min(520px, 100%);
   margin: 0 auto;
-  padding: clamp(36px, 7vw, 56px) clamp(20px, 6vw, 52px);
+  padding: clamp(26px, 5vw, 38px) clamp(20px, 5vw, 40px);
   text-align: center;
   border-radius: 18px;
 }
-.rsvp__title { margin: 8px 0 4px; font-family: var(--caps); font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem); letter-spacing: 0.3em; padding-left: 0.3em; }
-.rsvp__deadline { margin: 0 0 30px; font-style: italic; color: var(--ink-soft); }
+.rsvp__title { margin: 4px 0 2px; font-family: var(--caps); font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem); letter-spacing: 0.3em; padding-left: 0.3em; }
+.rsvp__deadline { margin: 0 0 18px; font-style: italic; color: var(--ink-soft); }
 
-.rsvp__form { display: grid; gap: 22px; text-align: left; }
+.rsvp__form { display: grid; gap: 16px; text-align: left; }
 .field { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
 .field > span, .field legend {
   padding: 0;
@@ -900,7 +900,7 @@ html.lenis, html.lenis body { height: auto; }
 .field input[aria-invalid="true"] { border-bottom-color: var(--heart); }
 
 .field--choice { display: block; }
-.field--choice legend { margin-bottom: 10px; }
+.field--choice legend { margin-bottom: 8px; }
 .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .field--choice label { position: relative; display: block; }
 .field--choice input { position: absolute; opacity: 0; pointer-events: none; }
@@ -908,8 +908,8 @@ html.lenis, html.lenis body { height: auto; }
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  padding: 10px 12px;
+  min-height: 44px;
+  padding: 8px 10px;
   border: 1px solid var(--glass-line);
   border-radius: 12px;
   background: rgba(255, 250, 244, 0.03);
@@ -926,8 +926,8 @@ html.lenis, html.lenis body { height: auto; }
 .field--guests.is-disabled { opacity: 0.35; pointer-events: none; }
 .stepper { display: flex; align-items: center; gap: 4px; }
 .stepper button {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--glass-line);
   border-radius: 50%;
   background: rgba(255, 250, 244, 0.03);
@@ -937,7 +937,9 @@ html.lenis, html.lenis body { height: auto; }
 .stepper button:hover { border-color: var(--gold); }
 .stepper output { min-width: 44px; text-align: center; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
 
-.rsvp__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+.rsvp__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.rsvp__actions .btn-glass { padding: 12px 14px; letter-spacing: 0.22em; white-space: nowrap; }
+.rsvp__status:empty { display: none; }
 .rsvp__status { margin: 0; min-height: 1.5em; text-align: center; font-style: italic; color: var(--ink-soft); }
 .rsvp__thanks .script { font-size: 3.4rem; color: var(--gold); margin: 10px 0 0; }
 .rsvp__thanks p:last-child { color: var(--ink-soft); font-size: 1.15rem; }
@@ -1030,7 +1032,9 @@ html.lenis, html.lenis body { height: auto; }
   .story-frame { --w: min(62vw, 300px); }
 
   .rsvp__actions { grid-template-columns: 1fr; }
-  .field--choice label span { font-size: 1rem; }
+  .field--choice label span { font-size: 0.95rem; white-space: nowrap; }
+  .rsvp__actions { gap: 8px; }
+  .rsvp__actions .btn-glass { min-height: 44px; padding: 11px 20px; }
 }
 
 @media (max-height: 560px) and (orientation: landscape) {

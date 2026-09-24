@@ -716,8 +716,7 @@
     const values = () => ({
       name: f.name.value.trim(),
       attending: f.attendance.value === "yes",
-      guests,
-      message: f.message.value.trim()
+      guests
     });
 
     const waUrl = (v) => {
@@ -728,7 +727,6 @@
         `Attendance: ${v.attending ? "Joyfully accepts" : "Regretfully declines"}`
       ];
       if (v.attending) lines.push(`Guests: ${v.guests}`);
-      if (v.message) lines.push(`Message: ${v.message}`);
       return `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`;
     };
 
